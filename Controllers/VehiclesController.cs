@@ -16,7 +16,6 @@ namespace OtroEF.Controllers
         {
             _context = context;
         }
-        public static List<Vehicle> vehicles = InitVehicles();
 
         [HttpGet("/vehicles")]
         public ActionResult<IEnumerable<Vehicle>> GetVehicles()
@@ -35,27 +34,5 @@ namespace OtroEF.Controllers
             
             return vehicle;
         }
-
-        private static List<Vehicle> InitVehicles()
-        {
-            List<Vehicle> vehicles = new List<Vehicle>();
-            vehicles.Add(new Vehicle
-            {
-                LicensePlate = "1",
-                Brand = "Mark",
-                Line = "Line1",
-                Model = 30
-            });
-            vehicles.Add(new Vehicle
-            {
-                LicensePlate = "2",
-                Brand = "Allan",
-                Line = "Line2",
-                Model = 35
-            });
-            return vehicles;
-        }
     }
-
-
 }
