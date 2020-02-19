@@ -40,7 +40,7 @@ namespace OtroEF.Controllers
             _context.Vehicles.Add(vehicle);
             _context.SaveChanges();
 
-            return CreatedAtAction("GetVehicles", new Vehicle { Id = vehicle.Id }, vehicle);
+            return CreatedAtAction("GetVehicles", new Vehicle { LicensePlate = vehicle.LicensePlate }, vehicle);
         }
     }
 }

@@ -19,14 +19,14 @@ namespace OtroEF.Models
         {
             modelBuilder.Entity<Vehicle>().HasData(new Vehicle
             {
-                Id = 1,
+                // Id = 1,
                 LicensePlate = "AAA111",
                 Brand = "Opel",
                 Line = "Corsa",
                 Model = 2008
             }, new Vehicle
             {
-                Id = 2,
+                // Id = 2,
                 LicensePlate = "AAA112",
                 Brand = "Renault",
                 Line = "Logal",

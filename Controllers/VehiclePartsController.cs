@@ -32,5 +32,14 @@ namespace OtroEF.Controllers
 
             return vehiclePart;
         }
+
+        [HttpPost]
+        public ActionResult<VehiclePart> PostVehiclePart(VehiclePart vehiclePart)
+        {
+            _context.VehicleParts.Add(vehiclePart);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetVehiclePart", new VehiclePart { Id = vehiclePart.Id});
+        }
     }
 }

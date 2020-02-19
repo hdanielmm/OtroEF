@@ -32,5 +32,14 @@ namespace OtroEF.Controllers
 
             return vehicleReview;
         }
+
+        [HttpPost]
+        public ActionResult<VehicleReview> PostVehicleReview(VehicleReview review)
+        {
+            _context.VehicleReviews.Add(review);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetVehicleReview", new VehicleReview {Id = review.Id}, review);
+        }
     }
 }

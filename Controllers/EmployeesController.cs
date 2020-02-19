@@ -14,7 +14,7 @@ namespace OtroEF.Controllers
         {
             _context = context;
         }
-        
+
         [HttpGet]
         public ActionResult<IEnumerable<Employee>> GetEmployees()
         {
@@ -22,14 +22,25 @@ namespace OtroEF.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Employee> GetEmployee(int id){
+        public ActionResult<Employee> GetEmployee(int id)
+        {
             var employee = _context.Employees.Find(id);
 
-            if (employee == null){
+            if (employee == null)
+            {
                 return NotFound();
             }
 
             return employee;
+        }
+
+        [HttpPost]
+        public ActionResult<Employee> PostEmployee(Employee employee)
+        {
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetEmployees", new Employee { Id = employee.Id });
         }
     }
 }
