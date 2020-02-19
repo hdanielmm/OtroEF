@@ -1,8 +1,6 @@
-using System.Net;
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 using OtroEF.Models;
 
 namespace OtroEF.Controllers
@@ -34,6 +32,15 @@ namespace OtroEF.Controllers
             }
 
             return vehicle;
+        }
+
+        [HttpPost]
+        public ActionResult<Vehicle> PostVehicle(Vehicle vehicle)
+        {
+            _context.Vehicles.Add(vehicle);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetVehicles", new Vehicle { Id = vehicle.Id }, vehicle);
         }
     }
 }
