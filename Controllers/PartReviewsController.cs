@@ -33,5 +33,14 @@ namespace OtroEF.Controllers
 
             return partReview;
         }
+
+        [HttpPost]
+        public ActionResult<PartReview> PostPartReview(PartReview partReview)
+        {
+            _context.PartReviews.Add(partReview);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetPartReviews", new PartReview { Id = partReview.Id }, partReview);
+        }
     }
 }

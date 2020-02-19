@@ -39,7 +39,7 @@ namespace OtroEF.Controllers
             _context.VehicleReviews.Add(review);
             _context.SaveChanges();
 
-            return CreatedAtAction("GetVehicleReview", new VehicleReview {Id = review.Id}, review);
+            return CreatedAtAction("GetVehicleReviews", new VehicleReview { Id = review.Id }, review);
         }
     }
 }

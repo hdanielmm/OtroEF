@@ -9,8 +9,8 @@ using OtroEF.Models;
 namespace OtroEF.Migrations
 {
     [DbContext(typeof(OtroEFContext))]
-    [Migration("20200218223323_Checkin2")]
-    partial class Checkin2
+    [Migration("20200219214021_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -132,10 +132,7 @@ namespace OtroEF.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("LicensePlate")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int?>("VehicleId")
+                    b.Property<int>("VehicleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -178,7 +175,9 @@ namespace OtroEF.Migrations
 
                     b.HasOne("OtroEF.Models.Vehicle", "Vehicle")
                         .WithMany()
-                        .HasForeignKey("VehicleId");
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

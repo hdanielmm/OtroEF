@@ -40,7 +40,7 @@ namespace OtroEF.Controllers
             _context.Employees.Add(employee);
             _context.SaveChanges();
 
-            return CreatedAtAction("GetEmployees", new Employee { Id = employee.Id });
+            return CreatedAtAction("GetEmployees", new Employee { Id = employee.Id }, employee);
         }
     }
 }
