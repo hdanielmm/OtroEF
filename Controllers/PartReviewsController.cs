@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
 using OtroEF.Models;
 
 namespace OtroEF.Controllers
@@ -20,6 +22,18 @@ namespace OtroEF.Controllers
         {
             return _context.PartReviews;
         }
+
+        // [HttpGet]
+        // public ActionResult<IEnumerable<PartReview>> GetTest()
+        // {
+        //     var query = _context.PartReviews
+        //         .Join(
+        //             _context.VehicleReviews,
+        //             pr => pr.VehicleReviewId,
+        //             vr => vr.PartReviewId
+        //         ).ToList();
+        //     return _context.PartReviews;
+        // }
 
         [HttpGet("{id}")]
         public ActionResult<PartReview> GetPartReview(int id)
