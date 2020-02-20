@@ -9,7 +9,7 @@ using OtroEF.Models;
 namespace OtroEF.Migrations
 {
     [DbContext(typeof(OtroEFContext))]
-    [Migration("20200219214021_InitialCreate")]
+    [Migration("20200220140117_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
