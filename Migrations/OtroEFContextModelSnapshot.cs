@@ -43,13 +43,10 @@ namespace OtroEF.Migrations
                     b.Property<string>("Diagnosis")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VehiclePartId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VehicleReviewId")
+                    b.Property<int?>("VehiclePartId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -57,8 +54,6 @@ namespace OtroEF.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.HasIndex("VehiclePartId");
-
-                    b.HasIndex("VehicleReviewId");
 
                     b.ToTable("PartReviews");
                 });
@@ -127,10 +122,10 @@ namespace OtroEF.Migrations
                     b.Property<DateTime>("DateReview")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VehicleId")
+                    b.Property<int?>("VehicleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -144,38 +139,24 @@ namespace OtroEF.Migrations
 
             modelBuilder.Entity("OtroEF.Models.PartReview", b =>
                 {
-                    b.HasOne("OtroEF.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("OtroEF.Models.Employee", null)
+                        .WithMany("PartReviews")
+                        .HasForeignKey("EmployeeId");
 
-                    b.HasOne("OtroEF.Models.VehiclePart", "VehiclePart")
-                        .WithMany()
-                        .HasForeignKey("VehiclePartId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OtroEF.Models.VehicleReview", "VehicleReview")
-                        .WithMany()
-                        .HasForeignKey("VehicleReviewId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("OtroEF.Models.VehiclePart", null)
+                        .WithMany("PartReviews")
+                        .HasForeignKey("VehiclePartId");
                 });
 
             modelBuilder.Entity("OtroEF.Models.VehicleReview", b =>
                 {
-                    b.HasOne("OtroEF.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("OtroEF.Models.Employee", null)
+                        .WithMany("VehicleReviews")
+                        .HasForeignKey("EmployeeId");
 
-                    b.HasOne("OtroEF.Models.Vehicle", "Vehicle")
-                        .WithMany()
-                        .HasForeignKey("VehicleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("OtroEF.Models.Vehicle", null)
+                        .WithMany("VehicleReviews")
+                        .HasForeignKey("VehicleId");
                 });
 #pragma warning restore 612, 618
         }
