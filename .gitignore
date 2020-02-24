@@ -37,3 +37,7 @@ msbuild.wrn
 .vs/
 
 obj/Debug/netcoreapp3.1/OtroEF.csprojAssemblyReference.cache
+bin/Debug/netcoreapp3.1/OtroEF.dll
+obj/Debug/netcoreapp3.1/OtroEF.pdb
+obj/Debug/netcoreapp3.1/OtroEF.dll
+obj/Debug/netcoreapp3.1/OtroEF.pdb
