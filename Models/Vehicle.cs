@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace OtroEF.Models
 {
     public class Vehicle
@@ -7,6 +9,8 @@ namespace OtroEF.Models
         public string Brand { get; set; }
         public string Line { get; set; }
         public int Model { get; set; }
+
+        public List<VehicleReview> VehicleReviews { get; set; }
     }
 
 }
