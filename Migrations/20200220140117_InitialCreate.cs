@@ -57,9 +57,8 @@ namespace OtroEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateReview = table.Column<DateTime>(nullable: false),
-                    LicensePlate = table.Column<string>(nullable: true),
-                    EmployeeId = table.Column<int>(nullable: false),
-                    VehicleId = table.Column<int>(nullable: true)
+                    VehicleId = table.Column<int>(nullable: false),
+                    EmployeeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,7 +74,7 @@ namespace OtroEF.Migrations
                         column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -112,6 +111,16 @@ namespace OtroEF.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Vehicles",
+                columns: new[] { "Id", "Brand", "LicensePlate", "Line", "Model" },
+                values: new object[] { 1, "Opel", "AAA111", "Corsa", 2008 });
+
+            migrationBuilder.InsertData(
+                table: "Vehicles",
+                columns: new[] { "Id", "Brand", "LicensePlate", "Line", "Model" },
+                values: new object[] { 2, "Renault", "AAA112", "Logal", 2020 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_PartReviews_EmployeeId",

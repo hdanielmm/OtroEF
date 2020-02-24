@@ -1,13 +1,11 @@
-using System.Net;
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
 using OtroEF.Models;
 
 namespace OtroEF.Controllers
 {
-    [Route("api/[controller")]
+    [Route("[controller]")]
     [ApiController]
     public class VehiclesController : ControllerBase
     {
@@ -17,22 +15,32 @@ namespace OtroEF.Controllers
             _context = context;
         }
 
-        [HttpGet("/vehicles")]
+        [HttpGet]
         public ActionResult<IEnumerable<Vehicle>> GetVehicles()
         {
             return _context.Vehicles;
         }
-        
-        [HttpGet("/vehicles/{id}")]
+
+        [HttpGet("{id}")]
         public ActionResult<Vehicle> GetVehicle(int id)
         {
             var vehicle = _context.Vehicles.Find(id);
 
-            if (vehicle == null) {
-              return NotFound();  
-            } 
-            
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
             return vehicle;
+        }
+
+        [HttpPost]
+        public ActionResult<Vehicle> PostVehicle(Vehicle vehicle)
+        {
+            _context.Vehicles.Add(vehicle);
+            _context.SaveChanges();
+
+            return CreatedAtAction("GetVehicles", new Vehicle { LicensePlate = vehicle.LicensePlate }, vehicle);
         }
     }
 }
