@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OtroEF.Models;
 
 namespace OtroEF.Controllers
@@ -18,10 +21,10 @@ namespace OtroEF.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Vehicle>> GetVehicles()
         {
-            return _context.Vehicles;
+            return _context.Vehicles.ToList();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("/vehicles/{id}")]
         public ActionResult<Vehicle> GetVehicle(int id)
         {
             var vehicle = _context.Vehicles.Find(id);

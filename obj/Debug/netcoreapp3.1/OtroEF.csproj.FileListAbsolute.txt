@@ -57,3 +57,6 @@
 /home/daniel/restApi/OtroEF/obj/Debug/netcoreapp3.1/OtroEF.csproj.CopyComplete
 /home/daniel/restApi/OtroEF/obj/Debug/netcoreapp3.1/OtroEF.dll
 /home/daniel/restApi/OtroEF/obj/Debug/netcoreapp3.1/OtroEF.pdb
+/home/daniel/restApi/OtroEF/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
+/home/daniel/restApi/OtroEF/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/daniel/restApi/OtroEF/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll

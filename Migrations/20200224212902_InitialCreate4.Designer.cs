@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OtroEF.Models;
 
 namespace OtroEF.Migrations
 {
     [DbContext(typeof(OtroEFContext))]
-    partial class OtroEFContextModelSnapshot : ModelSnapshot
+    [Migration("20200224212902_InitialCreate4")]
+    partial class InitialCreate4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -98,71 +100,6 @@ namespace OtroEF.Migrations
                     b.HasIndex("VehicleReviewId");
 
                     b.ToTable("PartReviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateReview = new DateTime(2020, 3, 4, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 1",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateReview = new DateTime(2020, 3, 4, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 2",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DateReview = new DateTime(2020, 3, 4, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 3",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DateReview = new DateTime(2020, 3, 4, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 4",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DateReview = new DateTime(2020, 3, 4, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 5",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DateReview = new DateTime(2020, 3, 4, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 6",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DateReview = new DateTime(2020, 3, 4, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            Diagnosis = "Diagnosis 7",
-                            EmployeeId = 5,
-                            VehiclePartId = 1,
-                            VehicleReviewId = 7
-                        });
                 });
 
             modelBuilder.Entity("OtroEF.Models.Vehicle", b =>
@@ -352,57 +289,6 @@ namespace OtroEF.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("VehicleReviews");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DateReview = new DateTime(2020, 3, 4, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DateReview = new DateTime(2020, 3, 4, 12, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DateReview = new DateTime(2020, 3, 4, 14, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DateReview = new DateTime(2020, 3, 4, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            DateReview = new DateTime(2020, 3, 4, 18, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            DateReview = new DateTime(2020, 3, 4, 20, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            DateReview = new DateTime(2020, 3, 4, 22, 0, 0, 0, DateTimeKind.Unspecified),
-                            EmployeeId = 1,
-                            VehicleId = 8
-                        });
                 });
 
             modelBuilder.Entity("OtroEF.Models.PartReview", b =>
