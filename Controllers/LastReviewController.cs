@@ -1,11 +1,7 @@
-using System.Collections;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 using OtroEF.Models;
 
 namespace OtroEF.Controllers
@@ -20,28 +16,38 @@ namespace OtroEF.Controllers
             _context = context;
         }
 
-        [HttpGet("/lastreview/rel")]
-        public ActionResult<List<Vehicle>> GetResult()
+        // Vehicle - VehicleReview - PartReview
+        [HttpGet("/lastreview/vpr")]
+        public ActionResult<IEnumerable<Vehicle>> GetResult()
         {
             var vehicles = _context.Vehicles
                 .Include(vehicle => vehicle.VehicleReviews)
                     .ThenInclude(vr => vr.PartReviews)
-                .Include(vehicle => vehicle.VehicleReviews)
-                    .ThenInclude(vr => vr.Employee)
                 .ToList();
             return vehicles;
         }
 
-        [HttpGet("/lastreview/pr")]
-        public ActionResult<List<PartReview>> GetPR()
+        // VehiclePart - PartReview - VehicleReview - Vehicle
+        [HttpGet("/lastreview/vp")]
+        public ActionResult<List<VehiclePart>> GetVP()
         {
-            var partReviews = _context.PartReviews
-                .Include(pr => pr.VehicleReview)
-                    .ThenInclude(vr => vr.Vehicle)
-                .Include(pr => pr.Employee)
-                .Include(pr => pr.VehiclePart)
+            var vehicleParts = _context.VehicleParts
+                .Include(vp => vp.PartReviews)
+                    .ThenInclude(pr => pr.VehicleReview)
+                        .ThenInclude(vr => vr.Vehicle)
                 .ToList();
-            return partReviews;
+            return vehicleParts;
+        }
+
+        // Employee - PartReview - VehiclePart
+        [HttpGet("/lastreview/evpr")]
+        public ActionResult<IEnumerable<Employee>> GetEVPR()
+        {
+            var employees = _context.Employees
+                .Include(e => e.PartReviews)
+                    .ThenInclude(pr => pr.VehiclePart)
+                .ToList();
+            return employees;
         }
     }
 }
