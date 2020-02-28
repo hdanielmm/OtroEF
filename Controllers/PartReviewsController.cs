@@ -47,18 +47,18 @@ namespace OtroEF.Controllers
             return CreatedAtAction("GetPartReviews", new PartReview { Id = partReview.Id }, partReview);
         }
 
-        [HttpPut("{id")]
-        public ActionResult PutCommandItem(int id, Command command)
-        {
-            if(id != command.Id)
-            {
-                return BadRequest();
-            }
+        // [HttpPut("{id}")]
+        // public ActionResult PutCommandItem(int id, Command command)
+        // {
+        //     if(id != command.Id)
+        //     {
+        //         return BadRequest();
+        //     }
 
-            _context.Entry(command).State = EntityState.Modified;
-            _context.SaveChanges();
+        //     _context.Entry(command).State = EntityState.Modified;
+        //     _context.SaveChanges();
 
-            return NoContent();
-        }
+        //     return NoContent();
+        // }
     }
 }
